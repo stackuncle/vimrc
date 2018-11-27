@@ -248,10 +248,11 @@ nmap wm :WMToggle<CR>
 Plugin 'tmhedberg/SimpylFold' "fold help
 let g:SimpylFold_docstring_preview=1
 
-" Plugin 'davidhalter/jedi-vim'
+" Python plugins
+Plugin 'davidhalter/jedi-vim' "auto implement
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'vim-scripts/indentpython.vim' "auto indent for python
-Plugin 'nvie/vim-flake8' "code style check for python
+Plugin 'vim-scripts/indentpython.vim' "auto indent
+Plugin 'nvie/vim-flake8' "code style check
 Plugin 'w0rp/ale' "syntax check plugin
 
 Plugin 'tomasr/molokai' "theme
@@ -270,7 +271,7 @@ let g:multi_cursor_quit_key='<Esc>'
 highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
 highlight link multiple_cursors_visual Visual
 
-Plugin 'pangloss/vim-javascript'
+" Plugin 'pangloss/vim-javascript'
 Plugin 'vim-scripts/c.vim'
 Plugin 'mattn/emmet-vim'
 " enable just for html/css

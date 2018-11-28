@@ -1,5 +1,5 @@
 " bowen's vim settings
-" encoding
+" 字符编码
 language messages zh_CN.utf-8
 set helplang=cn
 set fileencodings=utf-8,gb2312,gbk,gb18030
@@ -7,10 +7,31 @@ set termencoding=utf-8
 set fileformats=unix
 set encoding=utf-8
 
+" 定义快捷键的前缀，即<Leader>
+let mapleader=";"
+
+" 开启文件类型侦测
+filetype on
+" 根据侦测到的不同类型加载对应的插件
+filetype plugin on
+" 自适应不同语言的智能缩进
+filetype indent on
+
+" 让配置变更立即生效
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
+
+" 搜索高亮
 set hlsearch
+
+" 开启实时搜索功能
 set incsearch
-set laststatus=2
+
+" 搜索时大小写不敏感
 set ignorecase
+
+" 总是显示状态栏
+set laststatus=2
+
 set smartcase
 set nobackup
 set hidden
@@ -19,25 +40,42 @@ set showmode
 set title
 set t_Co=256
 
+" 设置编辑时制表符占用空格数
 set tabstop=4
+" 设置格式化时制表符占用空格数
 set shiftwidth=4
+" 让 vim 把连续数量的空格视为一个制表符
 set softtabstop=4
+" 将制表符扩展为空格
 set expandtab
+
 set autoindent
 set autoread
+
+" 开启行号显示
 set nu
+
+" 显示光标当前位置
 set ruler
+
 set clipboard=unnamed
 inoremap jj <esc>
 
-" highlight setting
+" 单行超过81个字符提示
 highlight Search term=standout ctermfg=0 ctermbg=11 guifg=Blue guibg=Yellow
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
+
+" 高亮显示当前行/列
 set cursorline
 set cursorcolumn
 
-" switch windows
+" 开启语法高亮功能
+syntax enable
+" 允许用指定语法高亮配色方案替换默认方案
+syntax on
+
+" 窗口切换快捷键 映射
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -109,22 +147,18 @@ au BufRead,BufNewFile *.py,*.pyw, set textwidth=100
 " Use UNIX (\n) line endings.
 au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
 
-" for full syntax highlighting:
+" python full syntax highlighting:
 let python_highlight_all=1
-syntax on
 
 " keep indentation level from previous line:
 autocmd FileType python set autoindent
 
+" vundle 管理的插件列表必须位于 vundle#begin() 和 vundle#end() 之间
 call vundle#begin()
-
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 Plugin 'tpope/vim-fugitive' "git wrapper
 Plugin 'bling/vim-airline' "better then powerline
 set ttimeoutlen=50

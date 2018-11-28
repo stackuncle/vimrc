@@ -191,7 +191,7 @@ Plugin 'vim-scripts/EasyGrep' "smart grep
 let g:EasyGrepRecursive=1
 let g:EasyGrepMode=2
 
-Plugin 'easymotion/vim-easymotion' "a much simpler way to use some motions
+Plugin 'easymotion/vim-easymotion' " a much simpler way to use some motions
 let g:EasyMotion_leader_key = 'f'
 
 Plugin 'vim-scripts/OmniCppComplete' "support class and function's autocompletion
@@ -273,14 +273,6 @@ highlight link multiple_cursors_visual Visual
 
 " Plugin 'pangloss/vim-javascript'
 Plugin 'vim-scripts/c.vim'
-Plugin 'mattn/emmet-vim'
-" enable just for html/css
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
-
-" Plugin 'Valloric/YouCompleteMe'
-" let g:ycm_autoclose_preview_window_after_completion=1
-" map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

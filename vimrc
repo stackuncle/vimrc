@@ -8,7 +8,7 @@ set fileformats=unix
 set encoding=utf-8
 
 " 定义快捷键的前缀，即<Leader>
-let mapleader=";"
+let mapleader=","
 
 " 开启文件类型侦测
 filetype on
@@ -64,7 +64,7 @@ inoremap jj <esc>
 " 单行超过81个字符提示
 highlight Search term=standout ctermfg=0 ctermbg=11 guifg=Blue guibg=Yellow
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+match OverLength /\%121v.\+/
 
 " 高亮显示当前行/列
 set cursorline
@@ -283,15 +283,11 @@ Plugin 'tmhedberg/SimpylFold' "fold help
 let g:SimpylFold_docstring_preview=1
 
 " Python plugins
-Plugin 'davidhalter/jedi-vim' "auto implement
+" Plugin 'davidhalter/jedi-vim' "auto implement
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-scripts/indentpython.vim' "auto indent
 Plugin 'nvie/vim-flake8' "code style check
 Plugin 'w0rp/ale' "syntax check plugin
-
-Plugin 'tomasr/molokai' "theme
-let g:molokai_original = 1
-colorscheme molokai
 
 Plugin 'luochen1990/rainbow' "colorful ()
 let g:rainbow_active = 1

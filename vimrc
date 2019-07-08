@@ -61,7 +61,7 @@ set ruler
 set clipboard=unnamed
 inoremap jj <esc>
 
-" 单行超过81个字符提示
+" 单行超过121个字符提示
 highlight Search term=standout ctermfg=0 ctermbg=11 guifg=Blue guibg=Yellow
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%121v.\+/

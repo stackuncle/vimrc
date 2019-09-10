@@ -47,7 +47,7 @@ set shiftwidth=4
 " 让 vim 把连续数量的空格视为一个制表符
 set softtabstop=4
 " 将制表符扩展为空格
-set expandtab
+" set expandtab
 
 set autoindent
 set autoread
@@ -123,11 +123,11 @@ set rtp+=~/.vim/bundle/Vundle.vim
 
 " spaces for indents
 au BufNewFile,BufRead *.py,*pyw
-    \ set tabstop=4 |
+    " \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
     \ set textwidth=120 |
-    \ set expandtab |
+    "\ set expandtab |
     \ set autoindent |
     \ set fileformat=unix |
 
@@ -207,6 +207,23 @@ nmap     Fp <Plug>CtrlSFPwordPath
 nnoremap Fo :CtrlSFOpen<CR>
 nnoremap Ft :CtrlSFToggle<CR>
 inoremap Ft <Esc>:CtrlSFToggle<CR>
+
+Plugin 'junegunn/fzf'
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 Plugin 'haya14busa/incsearch.vim'
 let g:incsearch#auto_nohlsearch = 1

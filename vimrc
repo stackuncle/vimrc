@@ -300,7 +300,6 @@ Plugin 'tmhedberg/SimpylFold' "fold help
 let g:SimpylFold_docstring_preview=1
 
 " Python plugins
-" Plugin 'davidhalter/jedi-vim' "auto implement
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-scripts/indentpython.vim' "auto indent
 Plugin 'nvie/vim-flake8' "code style check
@@ -309,17 +308,7 @@ Plugin 'w0rp/ale' "syntax check plugin
 Plugin 'luochen1990/rainbow' "colorful ()
 let g:rainbow_active = 1
 
-Plugin 'terryma/vim-multiple-cursors'
-let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
-highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
-highlight link multiple_cursors_visual Visual
-
-" Plugin 'pangloss/vim-javascript'
-Plugin 'vim-scripts/c.vim'
+" Plugin 'vim-scripts/c.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

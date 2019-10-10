@@ -72,6 +72,7 @@ set cursorcolumn
 
 " 开启语法高亮功能
 syntax enable
+
 " 允许用指定语法高亮配色方案替换默认方案
 syntax on
 
@@ -84,6 +85,7 @@ nnoremap <C-l> <C-w>l
 " enable folding
 set foldmethod=indent
 set foldlevel=99
+
 " enable using space to open folds
 nnoremap <space> za 
 
@@ -92,16 +94,7 @@ set backspace=indent,eol,start
 
 " Folding based on indentation:
 autocmd FileType python set foldmethod=indent
-" Auto add head info
-" .py file into add header
-function HeaderPython()
-    call setline(1, "#!/usr/bin/env python")
-    call append(1, "# -*- coding: utf-8 -*-")
-    normal G
-    normal o
-endf
-autocmd bufnewfile *.py call HeaderPython()
-"----------Stop settings for python --------------
+
 
 " ---------- Start Vundle ----------
 set nocompatible              " required
@@ -109,49 +102,6 @@ filetype off                  " required
 set titlestring=%f
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-
-"------------Start settings for Python----------------
-" python with virtualenv support---------------
-"py << EOF
-"import os
-"import sys
-"if 'VIRTUAL_ENV' in os.environ:
-"    project_base_dir = os.environ['VIRTUAL_ENV']
-"    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-"    execfile(activate_this, dict(__file__=activate_this))
-"EOF
-
-" spaces for indents
-au BufNewFile,BufRead *.py,*pyw
-    " \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=120 |
-    "\ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix |
-
-au BufNewFile,BufRead *.js,*.html,*.css
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
-
-" Use the below highlight group when displaying bad whitespace is desired.
-highlight BadWhitespace ctermbg=red guibg=red
-" Display tabs at the beginning of a line in Python mode as bad.
-au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
-" Make trailing whitespace be flagged as bad.
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-" Wrap text after a certain number of characters
-au BufRead,BufNewFile *.py,*.pyw, set textwidth=100
-" Use UNIX (\n) line endings.
-au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
-
-" python full syntax highlighting:
-let python_highlight_all=1
-
-" keep indentation level from previous line:
-autocmd FileType python set autoindent
 
 " vundle 管理的插件列表必须位于 vundle#begin() 和 vundle#end() 之间
 call vundle#begin()

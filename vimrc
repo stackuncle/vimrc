@@ -1,4 +1,5 @@
 " bowen's vim settings
+
 " 字符编码
 language messages zh_CN.utf-8
 set helplang=cn
@@ -7,30 +8,16 @@ set termencoding=utf-8
 set fileformats=unix
 set encoding=utf-8
 
-" 定义快捷键的前缀，即<Leader>
-let mapleader=","
-
-" 开启文件类型侦测
-filetype on
-" 根据侦测到的不同类型加载对应的插件
-filetype plugin on
-" 自适应不同语言的智能缩进
-filetype indent on
+let mapleader=";"  " 定义快捷键的前缀，即<Leader>
 
 " 让配置变更立即生效
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
-" 搜索高亮
-set hlsearch
+set hlsearch  " 搜索高亮
+set incsearch  " 开启实时搜索功能
+set ignorecase  " 搜索时大小写不敏感
 
-" 开启实时搜索功能
-set incsearch
-
-" 搜索时大小写不敏感
-set ignorecase
-
-" 总是显示状态栏
-set laststatus=2
+set laststatus=2  " 总是显示状态栏
 
 set smartcase
 set nobackup
@@ -40,23 +27,19 @@ set showmode
 set title
 set t_Co=256
 
-" 设置编辑时制表符占用空格数
-set tabstop=4
-" 设置格式化时制表符占用空格数
-set shiftwidth=4
-" 让 vim 把连续数量的空格视为一个制表符
-set softtabstop=4
+set tabstop=4  " 设置编辑时制表符占用空格数
+set shiftwidth=4  " 设置格式化时制表符占用空格数
+set softtabstop=4  " 让 vim 把连续数量的空格视为一个制表符
 " 将制表符扩展为空格
 " set expandtab
 
 set autoindent
 set autoread
 
-" 开启行号显示
-set nu
-
-" 显示光标当前位置
-set ruler
+set nu  " 开启行号显示
+set cursorline  " 高亮显示当前行/列
+set cursorcolumn
+set ruler  " 显示光标当前位置
 
 set clipboard=unnamed
 inoremap jj <esc>
@@ -66,15 +49,14 @@ highlight Search term=standout ctermfg=0 ctermbg=11 guifg=Blue guibg=Yellow
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%121v.\+/
 
-" 高亮显示当前行/列
-set cursorline
-set cursorcolumn
+syntax enable  " 开启语法高亮功能
+syntax on  " 允许用指定语法高亮配色方案替换默认方案
+filetype on  " 开启文件类型侦测
+filetype plugin on  " 根据侦测到的不同类型加载对应的插件
+filetype indent on  " 自适应不同语言的智能缩进
 
-" 开启语法高亮功能
-syntax enable
-
-" 允许用指定语法高亮配色方案替换默认方案
-syntax on
+" 退出插入模式指定类型的文件自动保存
+au InsertLeave *.go,*.sh,*.py write
 
 " 窗口切换快捷键 映射
 nnoremap <C-h> <C-w>h
@@ -254,6 +236,9 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-scripts/indentpython.vim' "auto indent
 Plugin 'nvie/vim-flake8' "code style check
 Plugin 'w0rp/ale' "syntax check plugin
+
+" Golang plugins
+Plugin 'fatih/vim-go'
 
 Plugin 'luochen1990/rainbow' "colorful ()
 let g:rainbow_active = 1

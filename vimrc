@@ -78,21 +78,18 @@ set backspace=indent,eol,start
 autocmd FileType python set foldmethod=indent
 
 
-" ---------- Start Vundle ----------
+" ---------- Start plug ----------
 set nocompatible              " required
-filetype off                  " required
+" filetype off                  " required
 set titlestring=%f
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+" set the runtime path to include plug and initialize
+set rtp+=~/.vim/autoload/plug.vim
 
-" vundle 管理的插件列表必须位于 vundle#begin() 和 vundle#end() 之间
-call vundle#begin()
+" plug 管理的插件列表必须位于 plug#begin() 和 plug#end() 之间
+call plug#begin('~/.vim/bundle')
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-Plugin 'tpope/vim-fugitive' "git wrapper
-Plugin 'bling/vim-airline' "better then powerline
+Plug 'tpope/vim-fugitive' "git wrapper
+Plug 'bling/vim-airline' "better then powerline
 set ttimeoutlen=50
 let g:airline_symbols = {}
 let g:airline_left_sep=''
@@ -110,16 +107,16 @@ let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.whitespace = 'Ξ'
 " let g:airline#extensions#whitespace#enabled = 0
 
-Plugin 'scrooloose/nerdtree' "filesystem plugin
+Plug 'scrooloose/nerdtree' "filesystem plugin
 " autocmd VimEnter * NERDTree
 nnoremap <silent> <F2> :NERDTree<CR>
 map <S-m> <plug>NERDTreeTabsToggle<CR>
 let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$', '\.lnk$']
 
-Plugin 'jistr/vim-nerdtree-tabs'
+Plug 'jistr/vim-nerdtree-tabs'
 
-Plugin 'kien/ctrlp.vim' " ctrl-p into file find mode
+Plug 'kien/ctrlp.vim' " ctrl-p into file find mode
 let g:ctrlp_map = '<c-p>'
 "let g:ctrlp_cmd = 'CtrlP' " conflict with ctrl-v
 let g:ctrlp_working_path_mode = 'ra'
@@ -127,7 +124,7 @@ let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*/lib/*,*/bin/*,*.so,*.swp,*.zip,*.png,*.jpg,*.jpeg,*.gif " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
-Plugin 'dyng/ctrlsf.vim' " like Ctrl-Shift-F in sublime
+Plug 'dyng/ctrlsf.vim' " like Ctrl-Shift-F in sublime
 let g:ctrlsf_default_root = 'src'
 let g:ctrlsf_open_left = 1
 let g:ctrlsf_ackprg = 'ack-grep'
@@ -140,7 +137,7 @@ nnoremap Fo :CtrlSFOpen<CR>
 nnoremap Ft :CtrlSFToggle<CR>
 inoremap Ft <Esc>:CtrlSFToggle<CR>
 
-Plugin 'junegunn/fzf'
+Plug 'junegunn/fzf'
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
@@ -157,7 +154,7 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-Plugin 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch.vim'
 let g:incsearch#auto_nohlsearch = 1
 map /  <Plug>(incsearch-forward)
 map n  <Plug>(incsearch-nohl-n)
@@ -167,29 +164,29 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
-Plugin 'rking/ag.vim' "faster than ack
+Plug 'rking/ag.vim' "faster than ack
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-Plugin 'vim-scripts/EasyGrep' "smart grep
+Plug 'vim-scripts/EasyGrep' "smart grep
 let g:EasyGrepRecursive=1
 let g:EasyGrepMode=2
 
-Plugin 'easymotion/vim-easymotion' " a much simpler way to use some motions
+Plug 'easymotion/vim-easymotion' " a much simpler way to use some motions
 let g:EasyMotion_leader_key = 'f'
 
-Plugin 'vim-scripts/OmniCppComplete' "support class and function's autocompletion
+Plug 'vim-scripts/OmniCppComplete' "support class and function's autocompletion
 set nocp
 filetype plugin on
 
-Plugin 'vim-scripts/Tagbar' "show functions, classes, vars
+Plug 'vim-scripts/Tagbar' "show functions, classes, vars
 let g:tagbar_width=35
 let g:tagbar_autofocus=1
 nmap tb :TagbarToggle<CR>
 autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.sh,*.py call tagbar#autoopen()
 
-Plugin 'vim-scripts/SuperTab' "tab autocompletion and hint
+Plug 'vim-scripts/SuperTab' "tab autocompletion and hint
 
-Plugin 'brookhong/cscope.vim' "a smart cscope helper for vim
+Plug 'brookhong/cscope.vim' "a smart cscope helper for vim
 nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
 nnoremap <leader>l :call ToggleLocationList()<CR>
 " s: Find this C symbol
@@ -209,13 +206,13 @@ nnoremap  <leader>fe :call CscopeFind('e', expand('<cword>'))<CR>
 " i: Find files #including this file
 " nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
 
-Plugin 'vim-scripts/taglist.vim'
+Plug 'vim-scripts/taglist.vim'
 let Tlist_Auto_open=1 " default open taglist
 let Tlist_Show_One_File=1 " only show current file's tags
 let Tlist_Exit_OnlyWindow=1 " exit vim if taglist is the last window
 let Tlist_Compart_Format = 1
 
-Plugin 'vim-scripts/winmanager'
+Plug 'vim-scripts/winmanager'
 let g:AutoOpenWinManager = 1
 let g:NERDTree_title="[NERDTree]"  
 let g:winManagerWindowLayout="NERDTree|TagList"  
@@ -228,27 +225,27 @@ function! NERDTree_IsValid()
 endfunction  
 nmap wm :WMToggle<CR> 
 
-Plugin 'tmhedberg/SimpylFold' "fold help
+Plug 'tmhedberg/SimpylFold' "fold help
 let g:SimpylFold_docstring_preview=1
 
 " Python plugins
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'vim-scripts/indentpython.vim' "auto indent
-Plugin 'nvie/vim-flake8' "code style check
-Plugin 'w0rp/ale' "syntax check plugin
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'vim-scripts/indentpython.vim' "auto indent
+Plug 'nvie/vim-flake8' "code style check
+Plug 'w0rp/ale' "syntax check plugin
 
 " Golang plugins
-Plugin 'fatih/vim-go'
+Plug 'fatih/vim-go'
 
-Plugin 'luochen1990/rainbow' "colorful ()
+Plug 'luochen1990/rainbow' "colorful ()
 let g:rainbow_active = 1
 
-" Plugin 'vim-scripts/c.vim'
+" Plug 'vim-scripts/c.vim'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+" All of your Plugs must be added before the following line
+call plug#end()            " required
 filetype plugin indent on    " required
-" ---------- Stop Vundle ----------
+" ---------- Stop plug ----------
 "
 if exists('$TMUX')
    set term=screen-256color
